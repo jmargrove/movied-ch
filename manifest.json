@@ -1,0 +1,7 @@
+{
+  "name": "movied",
+  "short_name": "movied",
+  "description": "browse movies",
+  "start_url": "/",
+  "display": "standalone"
+}
