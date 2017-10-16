@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="poster-box">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      .poster {
+        background: pink;
+        width:150px;
+        height:250px;
+        margin-right: 10px;
+      }
+    </style>
+
+    <div class="poster"></div>
+
+  </template>
+
+  <script>
+    class PosterBox extends Polymer.Element {
+      static get is() {
+        return 'poster-box';
+      }
+    }
+
+    window.customElements.define(PosterBox.is, PosterBox);
+  </script>
+</dom-module>

@@ -1,4 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/app-layout/app-layout.html">
+<link rel="import" href="./scroll-box.html">
 
 <dom-module id="movied-app">
   <template>
@@ -6,8 +8,23 @@
       :host {
         display: block;
       }
+      app-header {
+        background: black;
+        color: #ba640e;
+      }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <app-header-layout>
+  <app-header slot="header" fixed condenses effects="waterfall">
+    <app-toolbar>
+      <div main-title>Movied</div>
+    </app-toolbar>
+  </app-header>
+  <div>
+    <scroll-box></scroll-box>
+    <scroll-box></scroll-box>
+    <scroll-box></scroll-box>
+  </div>
+</app-header-layout>
   </template>
 
   <script>
@@ -16,7 +33,10 @@
      * @polymer
      */
     class MoviedApp extends Polymer.Element {
-      static get is() { return 'movied-app'; }
+
+      static get is() {
+        return 'movied-app';
+      }
       static get properties() {
         return {
           prop1: {
