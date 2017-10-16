@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="./poster-box.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
 <dom-module id="scroll-box">
   <template>
@@ -24,21 +25,24 @@
         justify-content: flex-start;
         justify-content: space;
       }
-      /*poster {
-        background: pink;
-        width:100px;
-        height:200px;
-      }*/
+      img {
+        height: 200px;
+      }
+
     </style>
 
     <div class="box">
       <h1>Genre</h1>
       <div class="movie-container">
-      <template is="dom-repeat" items="{{movies}}">
-        <poster-box>
-          {{movies}}
-        </poster-box>
-      </template>
+
+        <iron-ajax url="http://movied.herokuapp.com/categories/35" last-response="{{data}}" auto></iron-ajax>
+
+        <template is="dom-repeat" items="{{data}}">
+
+            <img src="https://image.tmdb.org/t/p/w300{{item.poster_path}}"/>
+
+        </template>
+
   </div>
   </div>
 
@@ -49,19 +53,7 @@
       static get is() {
         return 'scroll-box';
       }
-      static get properties() {
-        $.get('http://movied.herokuapp.com/categories/35', function(res) {
-          console.log(res);
-          return {
-            movies: {
-              type: Array,
-              value() {
-                return res;
-              }
-            }
-          }
-        })
-      }
+
     }
 
     window.customElements.define(ScrollBox.is, ScrollBox);
